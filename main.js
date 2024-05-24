@@ -2,6 +2,24 @@ import ShadingScene from "@openpv/simshady"
 import * as THREE from "three"
 import { MapControls } from "three/addons/controls/MapControls.js"
 import { STLLoader } from "three/examples/jsm/loaders/STLLoader.js"
+import { raster } from "./raster"
+
+async function main() {
+  console.log("Main script started")
+  const geometry = await loadSTLFile("building.stl")
+  console.log("geometry:")
+  console.log(geometry)
+  const scene = new ShadingScene(10, 10)
+  scene.addShadingGeometry(geometry)
+  scene.addSimulationGeometry(geometry)
+  //scene.addElevationRaster(raster, { x: 3, y: 3, z: 0 })
+  let mesh = await scene.calculate(100)
+
+  console.log("Mesh calculated:", mesh)
+  showThreeJS(mesh)
+}
+
+main()
 
 async function loadSTLFile(url) {
   const loader = new STLLoader()
@@ -62,19 +80,3 @@ function showThreeJS(mesh) {
 
   animate()
 }
-
-export async function main() {
-  console.log("Main script started")
-  const geometry = await loadSTLFile("building.stl")
-  console.log("geometry:")
-  console.log(geometry)
-  const scene = new ShadingScene(10, 10)
-  scene.addShadingGeometry(geometry)
-  scene.addSimulationGeometry(geometry)
-  let mesh = await scene.calculate(10)
-
-  console.log("Mesh calculated:", mesh)
-  showThreeJS(mesh)
-}
-
-main()
