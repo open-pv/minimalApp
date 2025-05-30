@@ -117,6 +117,19 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.20.2.tgz#9c907b21e30a52db959ba4f80bb01a0cc403d5cc"
   integrity sha512-N49X4lJX27+l9jbLKSqZ6bKNjzQvHaT8IIFUy+YIqmXQdjYCToGWwOItDrfby14c78aDd5NHQl29xingXfCdLQ==
 
+"@openpv/simshady@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@openpv/simshady/-/simshady-0.1.1.tgz#8be2cf6da44e18a72c5f805237e24def304fc6b5"
+  integrity sha512-+KnpnXu1ILR0LfH5na73nMQPRF10UmgawAT/IsvOVbhxCQ/magcoHbWAhWQB1TbW+g17cWlvX9Xj60nJWM+bkQ==
+  dependencies:
+    geotiff "^2.1.3"
+    three "^0.175.0"
+
+"@petamoriken/float16@^3.4.7":
+  version "3.9.2"
+  resolved "https://registry.yarnpkg.com/@petamoriken/float16/-/float16-3.9.2.tgz#217a5d349f3655b8e286be447e0ed1eae063a78f"
+  integrity sha512-VgffxawQde93xKxT3qap3OH+meZf7VaSB5Sqd4Rqc+FP5alWbpOyan/7tRbOAvynjpG3GpdtAuGU/NdhQpmrog==
+
 "@rollup/rollup-android-arm-eabi@4.18.0":
   version "4.18.0"
   resolved "https://registry.yarnpkg.com/@rollup/rollup-android-arm-eabi/-/rollup-android-arm-eabi-4.18.0.tgz#bbd0e616b2078cd2d68afc9824d1fadb2f2ffd27"
@@ -236,10 +249,39 @@ fsevents@~2.3.2, fsevents@~2.3.3:
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.3.tgz#cac6407785d03675a2a5e1a5305c697b347d90d6"
   integrity sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==
 
+geotiff@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/geotiff/-/geotiff-2.1.3.tgz#993f40f2aa6aa65fb1e0451d86dd22ca8e66910c"
+  integrity sha512-PT6uoF5a1+kbC3tHmZSUsLHBp2QJlHasxxxxPW47QIY1VBKpFB+FcDvX+MxER6UzgLQZ0xDzJ9s48B9JbOCTqA==
+  dependencies:
+    "@petamoriken/float16" "^3.4.7"
+    lerc "^3.0.0"
+    pako "^2.0.4"
+    parse-headers "^2.0.2"
+    quick-lru "^6.1.1"
+    web-worker "^1.2.0"
+    xml-utils "^1.0.2"
+    zstddec "^0.1.0"
+
+lerc@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/lerc/-/lerc-3.0.0.tgz#36f36fbd4ba46f0abf4833799fff2e7d6865f5cb"
+  integrity sha512-Rm4J/WaHhRa93nCN2mwWDZFoRVF18G1f47C+kvQWyHGEZxFpTUi73p7lMVSAndyxGt6lJ2/CFbOcf9ra5p8aww==
+
 nanoid@^3.3.7:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.7.tgz#d0c301a691bc8d54efa0a2226ccf3fe2fd656bd8"
   integrity sha512-eSRppjcPIatRIMC1U6UngP8XFcz8MQWGQdt1MTBQ7NaAmvXDfvNxbvWV3x2y6CdEUciCSsDHDQZbhYaB8QEo2g==
+
+pako@^2.0.4:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/pako/-/pako-2.1.0.tgz#266cc37f98c7d883545d11335c00fbd4062c9a86"
+  integrity sha512-w+eufiZ1WuJYgPXbV/PO3NCMEc3xqylkKHzp8bxp1uW4qaSNQUkwmLLEc3kKsfz8lpV1F8Ht3U1Cm+9Srog2ug==
+
+parse-headers@^2.0.2:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/parse-headers/-/parse-headers-2.0.6.tgz#7940f0abe5fe65df2dd25d4ce8800cb35b49d01c"
+  integrity sha512-Tz11t3uKztEW5FEVZnj1ox8GKblWn+PvHY9TmJV5Mll2uHEwRdR/5Li1OlXoECjLYkApdhWy44ocONwXLiKO5A==
 
 picocolors@^1.0.0:
   version "1.0.1"
@@ -254,6 +296,11 @@ postcss@^8.4.38:
     nanoid "^3.3.7"
     picocolors "^1.0.0"
     source-map-js "^1.2.0"
+
+quick-lru@^6.1.1:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-6.1.2.tgz#e9a90524108629be35287d0b864e7ad6ceb3659e"
+  integrity sha512-AAFUA5O1d83pIHEhJwWCq/RQcRukCkn/NSm2QsTEMle5f2hP0ChI2+3Xb051PZCkLryI/Ir1MVKviT2FIloaTQ==
 
 rollup@^4.13.0:
   version "4.18.0"
@@ -290,6 +337,11 @@ three@^0.164.1:
   resolved "https://registry.yarnpkg.com/three/-/three-0.164.1.tgz#b742f76bd8dfd3736ba0d86a12dfddb73c5cdcc0"
   integrity sha512-iC/hUBbl1vzFny7f5GtqzVXYjMJKaTPxiCxXfrvVdBi1Sf+jhd1CAkitiFwC7mIBFCo3MrDLJG97yisoaWig0w==
 
+three@^0.175.0:
+  version "0.175.0"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.175.0.tgz#67b357b0b1ee8ef0445b9a768f59363ab1fa7921"
+  integrity sha512-nNE3pnTHxXN/Phw768u0Grr7W4+rumGg/H6PgeseNJojkJtmeHJfZWi41Gp2mpXl1pg1pf1zjwR4McM1jTqkpg==
+
 vite@^5.2.0:
   version "5.2.11"
   resolved "https://registry.yarnpkg.com/vite/-/vite-5.2.11.tgz#726ec05555431735853417c3c0bfb36003ca0cbd"
@@ -300,3 +352,18 @@ vite@^5.2.0:
     rollup "^4.13.0"
   optionalDependencies:
     fsevents "~2.3.3"
+
+web-worker@^1.2.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/web-worker/-/web-worker-1.5.0.tgz#71b2b0fbcc4293e8f0aa4f6b8a3ffebff733dcc5"
+  integrity sha512-RiMReJrTAiA+mBjGONMnjVDP2u3p9R1vkcGz6gDIrOMT3oGuYwX2WRMYI9ipkphSuE5XKEhydbhNEJh4NY9mlw==
+
+xml-utils@^1.0.2:
+  version "1.10.2"
+  resolved "https://registry.yarnpkg.com/xml-utils/-/xml-utils-1.10.2.tgz#436b39ccc25a663ce367ea21abb717afdea5d6b1"
+  integrity sha512-RqM+2o1RYs6T8+3DzDSoTRAUfrvaejbVHcp3+thnAtDKo8LskR+HomLajEy5UjTz24rpka7AxVBRR3g2wTUkJA==
+
+zstddec@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/zstddec/-/zstddec-0.1.0.tgz#7050f3f0e0c3978562d0c566b3e5a427d2bad7ec"
+  integrity sha512-w2NTI8+3l3eeltKAdK8QpiLo/flRAr2p8AGeakfMZOXBxOg9HIu4LVDxBi81sYgVhFhdJjv1OrB5ssI8uFPoLg==

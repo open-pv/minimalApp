@@ -4,7 +4,5 @@ This repo provides a minimal Web App to showcase the most important features of 
 
 # Setup
 
-1. Install yarn `npm install --global yarn`
-1. Install @openpv/simshady either by using `yarn add "@openpv/simshady"` or by linking the development repo of simshady using `yarn link`
-1. Install packages `yarn install`
+1. Install packages, either by using `npm install` or `yarn install`
 1. Start the dev server `yarn dev`

@@ -2,55 +2,23 @@ import { ShadingScene } from "@openpv/simshady"
 import * as THREE from "three"
 import { MapControls } from "three/addons/controls/MapControls.js"
 import { STLLoader } from "three/examples/jsm/loaders/STLLoader.js"
-import { raster } from "./raster"
 
 async function main() {
   console.log("Main script started")
   const geometry = await loadSTLFile("building.stl")
   console.log("geometry:")
   console.log(geometry)
-  const scene = new ShadingScene(50, 11)
+  const scene = new ShadingScene()
   scene.addSimulationGeometry(geometry)
-  let url = "https://www.openpv.de/data/irradiance"
-  //scene.addElevationRaster(raster, { x: 3, y: 3, z: 0 }, 20)
+  await scene.addSolarIrradianceFromURL(
+    "https://api.openpv.de/skymaps/irradiance_50.0_8.0_2018_yearly.json"
+  )
   let mesh = await scene.calculate({
-    diffuseIrradianceURL: "https://www.openpv.de/data/irradiance",
-    urlDirectIrrandianceTIF:
-      "https://www.openpv.de/data/irradiance/geotiff/average_direct_radiation.tif",
-    urlDiffuseIrrandianceTIF:
-      "https://www.openpv.de/data/irradiance/geotiff/average_diffuse_radiation.tif",
+    // .21 is the efficiency of a solar panel
+    // .78 is the coverage factor of panels on a roof
+    solarToElectricityConversionEfficiency: 0.21 * 0.78,
   })
 
-  console.log("Mesh calculated:", mesh)
-  showThreeJS(mesh)
-}
-
-async function calibration() {
-  console.log("Calibration script started")
-  const geometry = new THREE.BufferGeometry()
-  const vertices = new Float32Array([
-    -1.0,
-    -1.0,
-    0.0, // Vertex 1
-    1.0,
-    -1.0,
-    0.0, // Vertex 2
-    0.0,
-    1.0,
-    0.0, // Vertex 3
-  ])
-  geometry.setAttribute("position", new THREE.BufferAttribute(vertices, 3))
-  const scene = new ShadingScene(50, 11)
-  scene.addSimulationGeometry(geometry)
-  let mesh = await scene.calculate({
-    numberSimulations: 100,
-    diffuseIrradiance: "https://www.openpv.de/data/irradiance",
-    urlDirectIrrandianceTIF:
-      "https://www.openpv.de/data/irradiance/geotiff/average_direct_radiation.tif",
-    urlDiffuseIrrandianceTIF:
-      "https://www.openpv.de/data/irradiance/geotiff/average_diffuse_radiation.tif",
-  })
-  console.log("Mesh calculated:", mesh)
   showThreeJS(mesh)
 }
 
